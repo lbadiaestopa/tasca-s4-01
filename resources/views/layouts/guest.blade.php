@@ -15,15 +15,15 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="font-geist">
-    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
-        <div>
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </div>
+<body class="min-h-dvh flex items-center font-geist mx-4">
+    <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-x-4 md:gap-x-6 w-full">
+        <div class="col-span-4 md:col-span-2 lg:col-span-2 md:col-start-4 lg:col-start-6 flex justify-center">
+    <a href="/">
+        <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+    </a>
+</div>
 
-        <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
+        <div class="md:col-start-3 lg:col-start-5 col-span-4 mb-10">
             {{ $slot }}
         </div>
     </div>
