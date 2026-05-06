@@ -1,3 +1,10 @@
 @tailwind base;
+
+@layer base {
+    body {
+        @apply font-light;
+    }
+}
+
 @tailwind components;
 @tailwind utilities;
