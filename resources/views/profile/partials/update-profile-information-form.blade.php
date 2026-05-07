@@ -1,6 +1,6 @@
 <section>
     <header>
-        <h2 class="text-2xl text-[#1B1A1A] leading-9 mb-2">
+        <h2 class="col-span-full text-xl leading-9 mb-2">
             {{ __('Profile Information') }}
         </h2>
 
@@ -30,10 +30,10 @@
 
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
                 <div>
-                    <p class="text-sm mt-2 text-[#1B1A1A]">
+                    <p class="text-sm mt-2 text-gray-800">
                         {{ __('Your email address is unverified.') }}
 
-                        <button form="send-verification" class="underline text-sm text-[#737373] hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        <button form="send-verification" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                             {{ __('Click here to re-send the verification email.') }}
                         </button>
                     </p>
@@ -56,7 +56,7 @@
                     x-show="show"
                     x-transition
                     x-init="setTimeout(() => show = false, 2000)"
-                    class="text-sm text-[#737373]"
+                    class="text-sm text-gray-600"
                 >{{ __('Saved.') }}</p>
             @endif
         </div>
