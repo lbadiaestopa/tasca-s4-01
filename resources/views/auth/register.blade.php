@@ -2,17 +2,17 @@
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
-        <!-- First Name -->
+        <!-- Name -->
         <div>
-            <x-input-label for="name" :value="__('First Name')" />
+            <x-input-label for="name" :value="__('Name')" />
             <x-text-input id="name" placeholder="e. g. John" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
         <!-- Last Name -->
         <div>
-            <x-input-label for="name" :value="__('Last Name')" />
-            <x-text-input id="name" placeholder="e. g. Smith" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+            <x-input-label for="last_name" :value="__('Last Name')" />
+            <x-text-input id="name" placeholder="e. g. Smith" class="block mt-1 w-full" type="text" name="last_name" :value="old('last_name')" required autofocus autocomplete="last_name" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
