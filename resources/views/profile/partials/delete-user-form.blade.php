@@ -41,12 +41,12 @@
                 <x-input-error :messages="$errors->userDeletion->get('password')" class="mt-2" />
             </div>
 
-            <div class="mt-6 flex justify-end">
+            <div class="flex justify-end">
                 <x-secondary-button x-on:click="$dispatch('close')">
                     {{ __('Cancel') }}
                 </x-secondary-button>
 
-                <x-primary-button class="ms-3">
+                <x-primary-button class="ms-3 mt-6">
                     {{ __('Delete Account') }}
                 </x-primary-button>
             </div>
