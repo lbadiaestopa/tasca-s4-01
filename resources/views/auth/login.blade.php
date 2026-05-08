@@ -15,12 +15,7 @@
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
+            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
@@ -33,18 +28,20 @@
         </div>
 
         <x-primary-button>
-            {{ __('Log in') }}
+            {{ __('Log In') }}
         </x-primary-button>
 
-        <x-secondary-button>
-            {{ __('I don’t have an account. Sign Up') }}
-        </x-secondary-button>
+        <a href="{{ route('register') }}">
+            <x-secondary-button>
+                {{ __('I don’t have an account. Sign Up') }}
+            </x-secondary-button>
+        </a>
 
         <div class="flex items-center justify-center mt-4">
             @if (Route::has('password.request'))
-                <a class="underline text-sm text-[#737373] hover:text-[#1B1A1A] rounded-m" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
+            <a class="underline text-sm text-[#737373] hover:text-[#1B1A1A] rounded-m" href="{{ route('password.request') }}">
+                {{ __('Forgot your password?') }}
+            </a>
             @endif
         </div>
     </form>
