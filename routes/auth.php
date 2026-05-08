@@ -54,7 +54,8 @@ Route::middleware('auth')->group(function () {
 
     Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
 
-    Route::put('password', [PasswordController::class, 'update'])->name('password.update');
+    Route::put('password', [PasswordController::class, 'update'])
+        ->name('password.update');
 
     Route::get('register-2', function () {
         return view('auth.register-2');
@@ -62,15 +63,19 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
-});
 
-Route::middleware(['auth', EnsureOnboardingIsCompleted::class])->group(function () {
+    Route::get('register-2', [OnboardingController::class, 'step2'])
+        ->name('register-2');
 
-    Route::get('register-2', [OnboardingController::class, 'step2'])->name('register-2');
+    Route::get('join-orchestra', [OnboardingController::class, 'step3'])
+        ->name('join-orchestra');
 
-    Route::get('join-orchestra', [OnboardingController::class, 'step3'])->name('join-orchestra');
+    Route::post('join-orchestra', [OnboardingController::class, 'join'])
+        ->name('join-orchestra.submit');
 
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::middleware(EnsureOnboardingIsCompleted::class)->group(function () {
+        Route::get('/dashboard', function () {
+            return view('dashboard');
+        })->name('dashboard');
+    });
 });
