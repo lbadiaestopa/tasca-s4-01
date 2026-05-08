@@ -1,6 +1,6 @@
 <x-guest-layout>
         <x-primary-button class="flex items-center justify-center mt-4">
-            <a href="{{ route('login') }}">
+            <a href="{{ route('join-orchestra') }}">
                 {{ __('I have an orchestra code') }}
             </a>
         </x-primary-button>
