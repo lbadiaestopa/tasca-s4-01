@@ -9,6 +9,8 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\OnboardingController;
+use App\Http\Middleware\EnsureOnboardingIsCompleted;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -52,8 +54,28 @@ Route::middleware('auth')->group(function () {
 
     Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
 
-    Route::put('password', [PasswordController::class, 'update'])->name('password.update');
+    Route::put('password', [PasswordController::class, 'update'])
+        ->name('password.update');
+
+    Route::get('register-2', function () {
+        return view('auth.register-2');
+    })->name('register-2');
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
+
+    Route::get('register-2', [OnboardingController::class, 'step2'])
+        ->name('register-2');
+
+    Route::get('join-orchestra', [OnboardingController::class, 'step3'])
+        ->name('join-orchestra');
+
+    Route::post('join-orchestra', [OnboardingController::class, 'join'])
+        ->name('join-orchestra.submit');
+
+    Route::middleware(EnsureOnboardingIsCompleted::class)->group(function () {
+        Route::get('/dashboard', function () {
+            return view('dashboard');
+        })->name('dashboard');
+    });
 });

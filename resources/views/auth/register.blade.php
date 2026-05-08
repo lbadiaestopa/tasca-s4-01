@@ -52,7 +52,7 @@
         </x-primary-button>
 
         <div class="flex items-center justify-center mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md" href="{{ route('login') }}">
+            <a class="underline text-sm text-[#737373] hover:text-[#1B1A1A] rounded-md" href="{{ route('login') }}">
                 {{ __('Already registered? Log In.') }}
             </a>
         </div>
