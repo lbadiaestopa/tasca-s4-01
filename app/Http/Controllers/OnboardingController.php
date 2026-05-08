@@ -13,6 +13,19 @@ class OnboardingController extends Controller
 
     public function step3()
     {
-        return view('join-orchestra');
+        return view('auth.join-orchestra');
+    }
+
+    public function join(Request $request)
+    {
+        $request->validate([
+            'code' => ['required', 'string'],
+        ]);
+
+        $user = auth()->user();
+        $user->onboarding_completed = true;
+        $user->save();
+
+        return redirect()->route('dashboard');
     }
 }
