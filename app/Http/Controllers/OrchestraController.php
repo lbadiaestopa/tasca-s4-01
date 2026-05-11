@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Orchestra;
+use App\Models\Membership;
 
 class OrchestraController extends Controller
 {
@@ -27,7 +29,29 @@ class OrchestraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
+            'venue' => 'required|string|max:255',
+        ]);
+
+        $user = auth()->user();
+
+        $orchestra = Orchestra::create($validated);
+
+        $user->update([
+            'onboarding_completed' => true
+        ]);
+
+        $user->refresh();
+
+        Membership::create([
+            'user_id' => $user->id,
+            'orchestra_id' => $orchestra->id,
+            'role' => 'admin',
+        ]);
+
+        return redirect()->route('dashboard');
     }
 
     /**
@@ -41,9 +65,11 @@ class OrchestraController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Orchestra $orchestra)
     {
-        //
+        return view('orchestras.edit', [
+            'orchestra' => $orchestra,
+        ]);
     }
 
     /**
