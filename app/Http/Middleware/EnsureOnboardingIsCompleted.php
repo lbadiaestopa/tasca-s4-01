@@ -14,7 +14,14 @@ class EnsureOnboardingIsCompleted
 
         if ($user && !$user->onboarding_completed) {
 
-            if (!$request->routeIs('register-2', 'join-orchestra', 'logout')) {
+            if (
+                !$request->routeIs(
+                    'register-2',
+                    'register-orchestra',
+                    'orchestras.store',
+                    'logout'
+                )
+            ) {
                 return redirect()->route('register-2');
             }
         }
