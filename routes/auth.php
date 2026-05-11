@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\OnboardingController;
+use App\Http\Controllers\OrchestraController;
 use App\Http\Middleware\EnsureOnboardingIsCompleted;
 use Illuminate\Support\Facades\Route;
 
@@ -57,15 +58,14 @@ Route::middleware('auth')->group(function () {
     Route::put('password', [PasswordController::class, 'update'])
         ->name('password.update');
 
-    Route::get('register-2', function () {
-        return view('auth.register-2');
-    })->name('register-2');
-
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 
     Route::get('register-2', [OnboardingController::class, 'step2'])
         ->name('register-2');
+
+    Route::get('register-orchestra', [OnboardingController::class, 'stepOrchestra'])
+        ->name('register-orchestra');
 
     Route::post('create-member-account', [OnboardingController::class, 'createMemberAccount'])
         ->name('create-member-account');
@@ -77,5 +77,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/dashboard', function () {
             return view('dashboard');
         })->name('dashboard');
+
+        Route::resource('orchestras', OrchestraController::class);
     });
 });
