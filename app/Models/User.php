@@ -31,6 +31,6 @@ class User extends Authenticatable
     }
 
     public function memberships() {
-        return $this->hasMany(Membership::class, 'orchestra_id', 'orchestra_id');
+        return $this->hasOne(Membership::class, 'orchestra_id', 'orchestra_id');
     }
 }
