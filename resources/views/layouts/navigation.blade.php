@@ -18,7 +18,7 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('orchestras.index')" :active="request()->routeIs('orchestras.index')" class="text-[#1B1A1A] leading-9">
+                    <x-nav-link :href="route('orchestras')" :active="request()->routeIs('orchestras')" class="text-[#1B1A1A] leading-9">
                         {{ __('Orchestra') }}
                     </x-nav-link>
                 </div>
