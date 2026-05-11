@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Membership;
 
 class Orchestra extends Model
 {
@@ -16,6 +17,6 @@ protected $fillable = [
 
     public function memberships()
 {
-    return $this->hasMany(Membership::class, 'orchestra_id', 'orchestra_id');
+    return $this->hasMany(Membership::class);
 }
 }
