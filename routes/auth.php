@@ -67,11 +67,11 @@ Route::middleware('auth')->group(function () {
     Route::get('register-2', [OnboardingController::class, 'step2'])
         ->name('register-2');
 
-    Route::get('join-orchestra', [OnboardingController::class, 'step3'])
-        ->name('join-orchestra');
+    Route::post('create-member-account', [OnboardingController::class, 'createMemberAccount'])
+        ->name('create-member-account');
 
-    Route::post('join-orchestra', [OnboardingController::class, 'join'])
-        ->name('join-orchestra.submit');
+    Route::post('create-admin-account', [OnboardingController::class, 'createAdminAccount'])
+        ->name('create-admin-account');
 
     Route::middleware(EnsureOnboardingIsCompleted::class)->group(function () {
         Route::get('/dashboard', function () {
