@@ -1,10 +1,10 @@
 <section>
     <header>
-        <h2 class="text-lg font-medium text-gray-900">
+        <h2 class="col-span-full text-xl leading-9 mb-2">
             {{ __('Profile Information') }}
         </h2>
 
-        <p class="mt-1 text-sm text-gray-600">
+        <p class="mt-1 text-sm text-[#737373]">
             {{ __("Update your account's profile information and email address.") }}
         </p>
     </header>

@@ -1,0 +1,28 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Membership extends Model
+{
+    protected $fillable = [
+        'user_id',
+        'orchestra_id',
+        'role',
+        'member_type',
+        'instrument',
+        'section',
+        'joined_at'
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'user_id');
+    }
+
+    public function orchestra()
+    {
+        return $this->belongsTo(Orchestra::class, 'orchestra_id', 'orchestra_id');
+    }
+}
