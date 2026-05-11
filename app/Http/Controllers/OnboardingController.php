@@ -18,6 +18,11 @@ class OnboardingController extends Controller
         return view('auth.join-orchestra');
     }
 
+    public function stepOrchestra()
+    {
+        return view('auth.register-orchestra');
+    }
+
     public function createMemberAccount()
     {
         $user = request()->user();
