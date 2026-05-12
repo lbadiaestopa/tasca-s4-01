@@ -14,6 +14,6 @@ class Program extends Model
 
     public function orchestra() 
     {
-        return $this->hasMany(Orchestra::class, 'orchestra_id', 'orchestra_id');
+        return $this->belongsTo(Orchestra::class);
     }
 }

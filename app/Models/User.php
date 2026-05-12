@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Membership;
 
 #[Fillable(['name', 'last_name', 'email', 'password', 'onboarding_completed'])]
 #[Hidden(['password', 'remember_token'])]
@@ -30,7 +31,8 @@ class User extends Authenticatable
         ];
     }
 
-    public function memberships() {
-        return $this->hasOne(Membership::class, 'orchestra_id', 'orchestra_id');
+    public function memberships()
+    {
+        return $this->hasMany(Membership::class);
     }
 }
