@@ -49,16 +49,11 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware(EnsureOnboardingIsCompleted::class)->group(function () {
 
-        Route::get('/dashboard', fn() => view('dashboard'))->name('dashboard');
+        Route::get('/dashboard', fn() => view('dashboard'))
+            ->name('dashboard');
 
-        Route::get('/orchestras', [OrchestraController::class, 'index'])->name('orchestras');
-        Route::get('/orchestras/{orchestra}', [OrchestraController::class, 'show'])->name('orchestras.show');
-
-        Route::middleware('role:admin')->group(function () {
-
-            Route::post('/orchestras', [OrchestraController::class, 'store'])->name('orchestras.store');
-            Route::put('/orchestras/{orchestra}', [OrchestraController::class, 'update'])->name('orchestras.update');
-            Route::delete('/orchestras/{orchestra}', [OrchestraController::class, 'destroy'])->name('orchestras.destroy');
-        });
+        Route::get('/orchestra', function () {
+            return view('orchestra');
+        })->name('orchestra');
     });
 });
