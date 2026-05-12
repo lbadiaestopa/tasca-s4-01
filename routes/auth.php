@@ -12,6 +12,7 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\OnboardingController;
 use App\Http\Controllers\OrchestraController;
 use App\Http\Middleware\EnsureOnboardingIsCompleted;
+use App\Http\Middleware\RoleMiddleware;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -47,6 +48,15 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
+    Route::get('register-2', [OnboardingController::class, 'step2'])
+        ->name('register-2');
+
+    Route::post('create-member-account', [OnboardingController::class, 'createMemberAccount'])
+        ->name('create-member-account');
+
+    Route::post('create-admin-account', [OnboardingController::class, 'createAdminAccount'])
+        ->name('create-admin-account');
+
     Route::middleware(EnsureOnboardingIsCompleted::class)->group(function () {
 
         Route::get('/dashboard', fn() => view('dashboard'))
@@ -55,5 +65,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/orchestra', function () {
             return view('orchestra');
         })->name('orchestra');
+
+        Route::middleware(RoleMiddleware::class)->group(function () {
+            Route::get('register-orchestra', [OnboardingController::class, 'stepOrchestra'])
+                ->name('register-orchestra');
+        });
     });
 });
