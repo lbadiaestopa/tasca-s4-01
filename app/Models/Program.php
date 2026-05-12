@@ -7,10 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Program extends Model
 {
     protected $fillable = [
-        'program_id',
         'name',
-        'type',
-        'venue',
         'start_date',
         'end_date'
     ];
