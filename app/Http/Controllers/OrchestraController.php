@@ -13,7 +13,11 @@ class OrchestraController extends Controller
      */
     public function index()
     {
-        //
+        $orchestras = Orchestra::all();
+
+        return view('orchestras.index', [
+            'orchestras' => $orchestras,
+        ]);
     }
 
     /**
@@ -51,7 +55,7 @@ class OrchestraController extends Controller
             'role' => 'admin',
         ]);
 
-        return redirect()->route('dashboard');
+        return redirect()->route('orchestras');
     }
 
     /**
@@ -59,7 +63,11 @@ class OrchestraController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $orchestra = Orchestra::findOrFail($id);
+
+        return view('orchestras.show', [
+            'orchestra' => $orchestra,
+        ]);
     }
 
     /**
