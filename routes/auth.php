@@ -62,13 +62,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/dashboard', fn() => view('dashboard'))
             ->name('dashboard');
 
-        Route::get('/orchestra', function () {
-            return view('orchestra');
-        })->name('orchestra');
-
-        Route::middleware(RoleMiddleware::class)->group(function () {
-            Route::get('register-orchestra', [OnboardingController::class, 'stepOrchestra'])
-                ->name('register-orchestra');
+        Route::middleware(['auth', RoleMiddleware::class])->group(function () {
+            Route::get('/orchestras', fn() => view('orchestras'))->name('orchestras');
         });
     });
 });
