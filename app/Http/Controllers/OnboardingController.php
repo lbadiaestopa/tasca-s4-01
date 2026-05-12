@@ -13,16 +13,6 @@ class OnboardingController extends Controller
         return view('auth.register-2');
     }
 
-    public function step3()
-    {
-        return view('auth.join-orchestra');
-    }
-
-    public function stepOrchestra()
-    {
-        return view('auth.register-orchestra');
-    }
-
     public function createMemberAccount()
     {
         $user = request()->user();
@@ -43,20 +33,12 @@ class OnboardingController extends Controller
         return redirect()->route('dashboard');
     }
 
-    public function createAdminAccount(Request $request)
+    public function createAdminAccount()
     {
         $user = request()->user();
 
-        $orchestra = Orchestra::create([
-            'name' => null,
-            'city' => null,
-            'venue' => null,
-            'program_id' => null,
-        ]);
-
         Membership::create([
             'user_id' => $user->id,
-            'orchestra_id' => $orchestra->id,
             'role' => 'admin',
             'member_type' => null,
             'instrument' => null,
