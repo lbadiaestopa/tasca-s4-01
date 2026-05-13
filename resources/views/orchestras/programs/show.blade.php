@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div>
+    <div class="flex gap-8">
         <h3>{{ $program->name }}</h3>
 
         <p>{{ $program->start_date }}</p>
