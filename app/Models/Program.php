@@ -12,8 +12,13 @@ class Program extends Model
         'end_date'
     ];
 
-    public function orchestra() 
+    public function orchestra()
     {
         return $this->belongsTo(Orchestra::class);
+    }
+
+    public function events()
+    {
+        return $this->hasMany(Event::class);
     }
 }
