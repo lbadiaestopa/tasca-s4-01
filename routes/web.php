@@ -48,6 +48,8 @@ Route::middleware('auth')->group(function () {
                 ->name('program.create');
             Route::post('/orchestras/{orchestra}/programs', [ProgramController::class, 'store'])
                 ->name('program.store');
+
+            Route::get('/orchestras/{orchestra}/programs/{program}', [ProgramController::class, 'show'])->name('programs.show');
         });
     });
 });
