@@ -43,9 +43,12 @@ class ProgramController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Orchestra $orchestra, Program $program)
     {
-        //
+        return view('orchestras.programs.show', [
+            'orchestra' => $orchestra,
+            'program' => $program,
+        ]);
     }
 
     /**
