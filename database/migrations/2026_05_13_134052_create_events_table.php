@@ -11,12 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('orchestras', function (Blueprint $table) {
+        Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('name')->nullable();
-            $table->string('city')->nullable();
-            $table->string('venue')->nullable();
+            $table->string('name');
+            $table->string('type');
+            $table->string('venue');
+            $table->dateTime('start_date');
+            $table->dateTime('end_date');
+            $table->foreignId('program_id');
         });
     }
 
@@ -25,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('orchestras');
+        Schema::dropIfExists('events');
     }
 };
