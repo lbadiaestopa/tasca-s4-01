@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OnboardingController;
 use App\Http\Controllers\OrchestraController;
+use App\Http\Controllers\ProgramController;
 use App\Http\Middleware\EnsureOnboardingIsCompleted;
 use App\Http\Middleware\RoleMiddleware;
 
@@ -35,7 +36,7 @@ Route::middleware('auth')->group(function () {
 
             Route::get('/orchestras/{orchestra}', [OrchestraController::class, 'show'])->name('orchestras.show');
 
-            Route::get('/create-orchestra', fn() => view('orchestras.create'))->name('orchestra.create');
+            Route::get('/create-orchestra', [OrchestraController::class, 'create'])->name('orchestras.create');
             Route::post('create-orchestra', [OrchestraController::class, 'store']);
 
             Route::get('/edit-orchestra/{id}', [OrchestraController::class, 'edit'])
