@@ -43,6 +43,11 @@ Route::middleware('auth')->group(function () {
                 ->name('orchestras.edit');
             Route::post('/edit-orchestra/{id}', [OrchestraController::class, 'update'])
                 ->name('orchestra.update');;
+
+            Route::get('/orchestras/{orchestra}/programs/create', [ProgramController::class, 'create'])
+                ->name('program.create');
+            Route::post('/orchestras/{orchestra}/programs', [ProgramController::class, 'store'])
+                ->name('program.store');
         });
     });
 });
