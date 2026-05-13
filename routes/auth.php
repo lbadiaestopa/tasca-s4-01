@@ -9,9 +9,6 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
-use App\Http\Controllers\OnboardingController;
-use App\Http\Controllers\OrchestraController;
-use App\Http\Middleware\EnsureOnboardingIsCompleted;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -46,19 +43,4 @@ Route::middleware('auth')->group(function () {
     Route::put('password', [PasswordController::class, 'update'])->name('password.update');
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
-
-    Route::middleware(EnsureOnboardingIsCompleted::class)->group(function () {
-
-        Route::get('/dashboard', fn() => view('dashboard'))->name('dashboard');
-
-        Route::get('/orchestras', [OrchestraController::class, 'index'])->name('orchestras');
-        Route::get('/orchestras/{orchestra}', [OrchestraController::class, 'show'])->name('orchestras.show');
-
-        Route::middleware('role:admin')->group(function () {
-
-            Route::post('/orchestras', [OrchestraController::class, 'store'])->name('orchestras.store');
-            Route::put('/orchestras/{orchestra}', [OrchestraController::class, 'update'])->name('orchestras.update');
-            Route::delete('/orchestras/{orchestra}', [OrchestraController::class, 'destroy'])->name('orchestras.destroy');
-        });
-    });
 });

@@ -18,11 +18,11 @@ class Membership extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id', 'user_id');
+        return $this->belongsTo(User::class);
     }
 
     public function orchestra()
     {
-        return $this->belongsTo(Orchestra::class, 'orchestra_id', 'orchestra_id');
+        return $this->belongsTo(Orchestra::class);
     }
 }

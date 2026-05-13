@@ -15,9 +15,15 @@ class RoleMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->user()?->membership->role !== 'admin') {
+        $isAdmin = auth()->user()
+            ->memberships()
+            ->where('role', 'admin')
+            ->exists();
+
+        if (!$isAdmin) {
             abort(403);
         }
+
         return $next($request);
     }
 }

@@ -8,8 +8,12 @@
             </x-primary-button>
         </form>
 
-        <a href="{{ route('register-orchestra') }}" class="border border-black w-full mt-2 py-2 text-center">
-            {{ __('Create an administrator account') }}
-        </a>
+        <form method="POST" action="{{ route('create-admin-account') }}">
+            @csrf
+
+            <button type="submit", class="border border-black w-full py-2 mt-6">
+                {{ __('Create an administrator account') }}
+            </button>
+        </form>
     </div>
 </x-guest-layout>
