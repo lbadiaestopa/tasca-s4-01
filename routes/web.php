@@ -35,8 +35,13 @@ Route::middleware('auth')->group(function () {
 
             Route::get('/orchestras/{orchestra}', [OrchestraController::class, 'show'])->name('orchestras.show');
 
-            Route::get('/create-orchestra', fn() => view('orchestras.create'))->name('create-orchestra');
+            Route::get('/create-orchestra', fn() => view('orchestras.create'))->name('orchestra.create');
             Route::post('create-orchestra', [OrchestraController::class, 'store']);
+
+            Route::get('/edit-orchestra/{id}', [OrchestraController::class, 'edit'])
+                ->name('orchestras.edit');
+            Route::post('/edit-orchestra/{id}', [OrchestraController::class, 'update'])
+                ->name('orchestra.update');;
         });
     });
 });

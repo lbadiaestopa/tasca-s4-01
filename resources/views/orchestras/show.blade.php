@@ -5,5 +5,9 @@
         <p>{{ $orchestra->city }}</p>
 
         <p>{{ $orchestra->venue }}</p>
+
+        <a href="{{ route('orchestras.edit', $orchestra) }}">
+            Edit
+        </a>
     </div>
 </x-app-layout>
