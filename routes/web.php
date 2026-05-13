@@ -43,12 +43,17 @@ Route::middleware('auth')->group(function () {
             Route::get('/edit-orchestra/{id}', [OrchestraController::class, 'edit'])
                 ->name('orchestras.edit');
             Route::post('/edit-orchestra/{id}', [OrchestraController::class, 'update'])
-                ->name('orchestra.update');;
+                ->name('orchestra.update');
 
             Route::get('/orchestras/{orchestra}/programs/create', [ProgramController::class, 'create'])
                 ->name('program.create');
             Route::post('/orchestras/{orchestra}/programs', [ProgramController::class, 'store'])
                 ->name('program.store');
+
+            Route::get('/orchestras/{orchestra}/programs/{program}/edit', [ProgramController::class, 'edit'])
+                ->name('programs.edit');
+            Route::put('/orchestras/{orchestra}/programs/{program}', [ProgramController::class, 'update'])
+                ->name('programs.update');
 
             Route::get('/orchestras/{orchestra}/programs/{program}', [ProgramController::class, 'show'])->name('programs.show');
 
