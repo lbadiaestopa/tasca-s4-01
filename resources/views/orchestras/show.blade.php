@@ -16,12 +16,14 @@
     <h2>Programs</h2>
 
     @foreach ($orchestra->programs as $program)
-    <div class="border border-black">
-        <h3>{{ $program->name }}</h3>
+    <a href="{{ route('programs.show', [$orchestra, $program]) }}">
+        <div class="border border-black">
+            <h3>{{ $program->name }}</h3>
 
-        <p>{{ $program->start_date }}</p>
+            <p>{{ $program->start_date }}</p>
 
-        <p>{{ $program->end_date }}</p>
-    </div>
+            <p>{{ $program->end_date }}</p>
+        </div>
+    </a>
     @endforeach
 </x-app-layout>
