@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
-            $table->date('start-date');
-            $table->date('end-date');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->foreignId('orchestra_id')->nullable();
         });
     }
