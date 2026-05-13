@@ -73,8 +73,10 @@ class OrchestraController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Orchestra $orchestra)
+    public function edit(string $id)
     {
+        $orchestra = Orchestra::findOrFail($id);
+
         return view('orchestras.edit', [
             'orchestra' => $orchestra,
         ]);
@@ -85,7 +87,15 @@ class OrchestraController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $orchestra = Orchestra::findOrFail($id);
+
+        $orchestra->update([
+            'name' => $request->name,
+            'city' => $request->city,
+            'venue' => $request->venue,
+        ]);
+
+        return redirect()->route('orchestras.show', $orchestra->id);
     }
 
     /**
