@@ -43,17 +43,21 @@ class OrchestraController extends Controller
 
         $orchestra = Orchestra::create($validated);
 
-        $user->update([
-            'onboarding_completed' => true
-        ]);
+        $membership = Membership::where('user_id', $user->id)->first();
+
+        if ($membership && is_null($membership->orchestra_id)) {
+            $membership->update([
+                'orchestra_id' => $orchestra->id,
+            ]);
+        } else {
+            Membership::create([
+                'user_id' => $user->id,
+                'orchestra_id' => $orchestra->id,
+                'joined_at' => now(),
+            ]);
+        }
 
         $user->refresh();
-
-        Membership::create([
-            'user_id' => $user->id,
-            'orchestra_id' => $orchestra->id,
-            'role' => 'admin',
-        ]);
 
         return redirect()->route('orchestras');
     }
