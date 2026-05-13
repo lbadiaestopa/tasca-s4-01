@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OnboardingController;
 use App\Http\Controllers\OrchestraController;
 use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\EventController;
 use App\Http\Middleware\EnsureOnboardingIsCompleted;
 use App\Http\Middleware\RoleMiddleware;
 
@@ -50,6 +51,13 @@ Route::middleware('auth')->group(function () {
                 ->name('program.store');
 
             Route::get('/orchestras/{orchestra}/programs/{program}', [ProgramController::class, 'show'])->name('programs.show');
+
+            Route::get('/orchestras/{orchestra}/programs/{program}/events/create', [EventController::class, 'create'])
+                ->name('event.create');
+            Route::post('/orchestras/{orchestra}/programs/{program}/events', [EventController::class, 'store'])
+                ->name('event.store');
+
+            Route::get('/orchestras/{orchestra}/programs/{program}/events/{event}', [EventController::class, 'show'])->name('events.show');
         });
     });
 });
