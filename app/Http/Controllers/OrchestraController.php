@@ -63,7 +63,7 @@ class OrchestraController extends Controller
      */
     public function show(string $id)
     {
-        $orchestra = Orchestra::findOrFail($id);
+        $orchestra = Orchestra::with('programs')->findOrFail($id);
 
         return view('orchestras.show', [
             'orchestra' => $orchestra,
