@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-x-4 md:gap-x-6 w-full mt-20">
         <div class="col-span-4 md:col-start-3 lg:col-start-5 flex justify-center">
-            <form class="w-full" method="POST" action="{{ route('create-orchestra') }}">
+            <form class="w-full" method="POST" action="{{ route('orchestra.create') }}">
                 @csrf
 
                 <!-- Name -->
