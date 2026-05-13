@@ -12,7 +12,6 @@ class Event extends Model
         'venue',
         'start_date',
         'end_date',
-        'program_id',
     ];
 
     public function program()
