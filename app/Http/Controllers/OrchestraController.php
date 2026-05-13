@@ -53,6 +53,7 @@ class OrchestraController extends Controller
             Membership::create([
                 'user_id' => $user->id,
                 'orchestra_id' => $orchestra->id,
+                'role' => 'admin',
                 'joined_at' => now(),
             ]);
         }
