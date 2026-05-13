@@ -1,5 +1,5 @@
 <x-app-layout>
-    <a href="create-program" class="absolute bottom-12 right-16 border border-black bg-black text-white px-4 py-2">+ Add a new program</a>
+    <a href="{{ route('program.create', $orchestra) }}" class="absolute bottom-12 right-16 border border-black bg-black text-white px-4 py-2">+ Add a new program</a>
 
     <div class="flex">
         <h1>{{ $orchestra->name }}</h1>
@@ -16,8 +16,8 @@
     <h2>Programs</h2>
 
     @foreach ($orchestra->programs as $program)
-    <div>
-        <h3>{{ $program->title }}</h3>
+    <div class="border border-black">
+        <h3>{{ $program->name }}</h3>
 
         <p>{{ $program->start_date }}</p>
 
