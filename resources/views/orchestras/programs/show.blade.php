@@ -5,6 +5,10 @@
         <p>{{ $program->start_date }}</p>
 
         <p>{{ $program->end_date }}</p>
+
+        <a href="{{ route('programs.edit', [$orchestra, $program]) }}">
+            Edit
+        </a>
     </div>
 
     <h2>Programs</h2>
