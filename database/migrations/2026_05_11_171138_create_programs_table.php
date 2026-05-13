@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->date('start-date');
             $table->date('end-date');
+            $table->foreignId('orchestra_id')->nullable();
         });
     }
 

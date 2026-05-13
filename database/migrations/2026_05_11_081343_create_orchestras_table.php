@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('city')->nullable();
             $table->string('venue')->nullable();
-            $table->foreignId('program_id')->nullable();
         });
     }
 
