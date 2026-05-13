@@ -28,9 +28,19 @@ class EventController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Orchestra $orchestra, Program $program)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'type' => 'required|in:rehearsal,concert,soundcheck',
+            'venue' => 'required|string|max:255',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date',
+        ]);
+
+        $program->events()->create($validated);
+
+        return redirect()->route('programs.show', [$orchestra, $program]);
     }
 
     /**
