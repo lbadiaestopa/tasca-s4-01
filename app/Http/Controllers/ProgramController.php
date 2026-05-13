@@ -54,17 +54,28 @@ class ProgramController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Orchestra $orchestra, Program $program)
     {
-        //
+        return view('orchestras.programs.edit', [
+            'orchestra' => $orchestra,
+            'program' => $program,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Orchestra $orchestra, Program $program)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after_or_equal:start_date',
+        ]);
+
+        $program->update($validated);
+
+        return redirect()->route('programs.show', [$orchestra, $program]);
     }
 
     /**
