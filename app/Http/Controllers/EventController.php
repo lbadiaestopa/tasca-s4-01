@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Program;
+use App\Models\Orchestra;
+use App\Models\Event;
 
 class EventController extends Controller
 {
@@ -17,9 +20,9 @@ class EventController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Orchestra $orchestra, Program $program)
     {
-        //
+        return view('orchestras.programs.events.create', compact('orchestra', 'program'));
     }
 
     /**
