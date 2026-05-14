@@ -6,32 +6,31 @@
 
                 <!-- Name -->
                 <div>
-                    <x-input-label for="name" :value="__('Name')" />
-                    <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name', $orchestra->name)" required autofocus autocomplete="name" />
+                    <x-input-label for="name" :value="__('Name')" class="ms-2" />
+                    <x-text-input id="name" class="blockw-full mt-1" type="text" name="name" :value="old('name', $orchestra->name)" required autofocus autocomplete="name" />
                     <x-input-error :messages="$errors->get('name')" class="mt-2" />
                 </div>
 
                 <!-- City -->
                 <div class="mt-4">
-                    <x-input-label for="city" :value="__('City')" />
-                    <x-text-input id="city" class="block mt-1 w-full" type="text" name="city" :value="old('name', $orchestra->city)" required autocomplete="address-level2" />
+                    <x-input-label for="city" :value="__('City')" class="ms-2" />
+                    <x-text-input id="city" class="blockw-full mt-1" type="text" name="city" :value="old('name', $orchestra->city)" required autocomplete="address-level2" />
                     <x-input-error :messages="$errors->get('city')" class="mt-2" />
                 </div>
 
                 <!-- Venue -->
                 <div class="mt-4">
-                    <x-input-label for="venue" :value="__('Venue')" />
-                    <x-text-input id="venue" class="block mt-1 w-full" type="text" name="venue" :value="old('name', $orchestra->venue)" required autocomplete="organization" />
+                    <x-input-label for="venue" :value="__('Venue')" class="ms-2" />
+                    <x-text-input id="venue" class="blockw-full mt-1" type="text" name="venue" :value="old('name', $orchestra->venue)" required autocomplete="organization" />
                     <x-input-error :messages="$errors->get('venue')" class="mt-2" />
                 </div>
 
                 <!-- Submit -->
-                <div class="mt-6">
+                <div class="mt-4">
                     <x-primary-button>
                         {{ __('Save') }}
                     </x-primary-button>
                 </div>
-
             </form>
         </div>
     </div>
