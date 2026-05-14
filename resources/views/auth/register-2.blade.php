@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <div class="flex flex-col col-span-4">
+    <div class="flex flex-col col-span-4 mt-6">
         <form method="POST" action="{{ route('create-member-account') }}">
             @csrf
 
@@ -11,9 +11,9 @@
         <form method="POST" action="{{ route('create-admin-account') }}">
             @csrf
 
-            <button type="submit", class="border border-black w-full py-2 mt-6">
+            <x-secondary-button class="mt-2">
                 {{ __('Create an administrator account') }}
-            </button>
+            </x-secondary-button>
         </form>
     </div>
 </x-guest-layout>
