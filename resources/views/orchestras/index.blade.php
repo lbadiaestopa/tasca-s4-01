@@ -4,9 +4,9 @@
     <a href="{{ route('orchestras.show', $orchestra) }}">
         <div class="py-3 px-6 mt-4 border border-[#D9D9D9] rounded-2xl">
             <div class="flex gap-8">
-                <span class="font-semibold">{{ $orchestra->name }}</span>
-                <span class="text-[#737373]">{{ $orchestra->venue }}</span>
-                <span class="text-[#737373]">{{ $orchestra->city }}</span>
+                <h3 class="font-semibold">{{ $orchestra->name }}</h3>
+                <p class="text-[#737373]">{{ $orchestra->venue }}</p>
+                <p class="text-[#737373]">{{ $orchestra->city }}</p>
             </div>
         </div>
     </a>
