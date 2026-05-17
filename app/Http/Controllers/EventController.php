@@ -46,9 +46,13 @@ class EventController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Orchestra $orchestra, Program $program, Event $event)
     {
-        //
+        return view('orchestras.programs.events.show', [
+            'orchestra' => $orchestra,
+            'program' => $program,
+            'event' => $event,
+        ]);
     }
 
     /**

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Orchestra;
 use App\Models\Membership;
+use App\Models\Event;
 
 class OrchestraController extends Controller
 {
@@ -13,9 +14,14 @@ class OrchestraController extends Controller
      */
     public function index()
     {
-        $orchestras = Orchestra::all();
+        $orchestras = Orchestra::with('programs.events')->get();
+
+        $events = Event::with(['program.orchestra'])
+            ->orderBy('start_date')
+            ->get();
 
         return view('orchestras.index', [
+            'events' => $events,
             'orchestras' => $orchestras,
         ]);
     }
@@ -68,10 +74,12 @@ class OrchestraController extends Controller
      */
     public function show(string $id)
     {
-        $orchestra = Orchestra::with('programs')->findOrFail($id);
+        $orchestra = Orchestra::with('programs.events')->findOrFail($id);
+        $orchestras = Orchestra::with('programs.events')->get();
 
         return view('orchestras.show', [
             'orchestra' => $orchestra,
+            'orchestras' => $orchestras,
         ]);
     }
 
