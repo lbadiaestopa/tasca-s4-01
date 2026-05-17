@@ -16,10 +16,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="min-h-dvh font-geist">
-
     @include('layouts.navigation')
-
-    <div class="mx-4 md:mx-6 lg:mx-20 min-h-screen">
 
         <!-- Page Heading -->
         @isset($header)
@@ -34,6 +31,5 @@
         <main>
             {{ $slot }}
         </main>
-    </div>
 </body>
 </html>
