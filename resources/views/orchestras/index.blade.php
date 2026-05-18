@@ -37,7 +37,7 @@
 
                 <div class="flex flex-col justify-center">
                     <div class="flex flex-col mb-2 px-2 rounded-lg">
-                        <a href="">Edit</a>
+                        <a href="{{ route('events.edit', [$event->program->orchestra, $event->program, $event]) }}">Edit</a>
                     </div>
 
                     <div class="flex flex-col mb-2 px-2 rounded-lg">
