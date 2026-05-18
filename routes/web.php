@@ -48,6 +48,11 @@ Route::middleware('auth')->group(function () {
             ->name('event.store');
 
         Route::get('/orchestras/{orchestra}/programs/{program}/events/{event}', [EventController::class, 'show'])->name('events.show');
+
+        Route::get('/orchestras/{orchestra}/programs/{program}/events/{event}/edit', [EventController::class, 'edit'])
+            ->name('events.edit');
+        Route::put('/orchestras/{orchestra}/programs/{program}/events/{event}', [EventController::class, 'update'])
+            ->name('events.update');
     });
 });
 
