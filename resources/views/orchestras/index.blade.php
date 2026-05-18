@@ -9,26 +9,42 @@
             <h2 class="col-span-full text-xl leading-9 mb-2">Next Events</h2>
 
             @foreach($events as $event)
-            <a href="{{ route('events.show', ['orchestra' => $event->program->orchestra, 'program' => $event->program, 'event' => $event]) }}">
-                <div class="mb-2 block p-2 rounded-lg bg-[#FAFAFA]">
-                    <div>
-                        <h3 class="font-semibold">{{ $event->name }}</h3>
-                        <a href="events.edit"></a>
-                    </div>
-                    <div class="flex justify-between">
-                        <div class="flex gap-2">
-                            <p class="text-[#737373]">{{ $event->program->name }}</p>
-                            <p class="text-[#737373]">·</p>
-                            <p class="text-[#737373]">{{ $event->program->orchestra->name }}</p>
-                        </div>
+            <div class="flex justify-between gap-2">
+                <div class="flex-1">
+                    <a href="{{ route('events.show', ['orchestra' => $event->program->orchestra, 'program' => $event->program, 'event' => $event]) }}">
+                        <div class="mb-2 block p-2 rounded-lg bg-[#FAFAFA]">
+                            <div class="flex justify-between">
+                                <h3 class="font-semibold">{{ $event->name }}</h3>
+                                <p>{{ \Illuminate\Support\Str::ucfirst($event->type) }}</p>
 
-                        <div class="flex gap-4">
-                            <p class="text-[#737373]">{{ $event->start_date->format('H:i') }} - {{ $event->end_date->format('H:i') }}</p>
-                            <p>{{ $event->start_date->format('d/m/y') }}</p>
+                            </div>
+                            <div class="flex justify-between">
+                                <div class="flex gap-2">
+                                    <p class="text-[#737373]">{{ $event->program->name }}</p>
+                                    <p class="text-[#737373]">·</p>
+                                    <p class="text-[#737373]">{{ $event->program->orchestra->name }}</p>
+                                </div>
+
+                                <div class="flex gap-2">
+                                    <p class="text-[#737373]">{{ $event->start_date->format('H:i') }} - {{ $event->end_date->format('H:i') }}</p>
+                                    <p class="text-[#737373]">·</p>
+                                    <p class="text-[#737373]">{{ $event->start_date->format('F j, Y') }}</p>
+                                </div>
+                            </div>
                         </div>
+                    </a>
+                </div>
+
+                <div class="flex flex-col justify-center">
+                    <div class="flex flex-col mb-2 px-2 rounded-lg">
+                        <a href="">Edit</a>
+                    </div>
+
+                    <div class="flex flex-col mb-2 px-2 rounded-lg">
+                        <a href="" class="text-red-500">Delete</a>
                     </div>
                 </div>
-            </a>
+            </div>
             @endforeach
         </main>
     </div>
