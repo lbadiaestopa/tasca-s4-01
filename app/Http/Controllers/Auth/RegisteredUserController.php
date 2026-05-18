@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Membership;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -44,10 +45,19 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        Membership::create([
+            'user_id' => $user->id,
+            'role' => 'admin',
+            'member_type' => null,
+            'instrument' => null,
+            'section' => null,
+            'joined_at' => now(),
+        ]);
+
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(route('register-2', absolute: false));
+        return redirect(route('orchestras', absolute: false));
     }
 }
