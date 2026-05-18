@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Program;
 use App\Models\Orchestra;
 use App\Models\Event;
+use App\Enums\EventType;
 
 class EventController extends Controller
 {
@@ -58,17 +59,31 @@ class EventController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Orchestra $orchestra, Program $program, Event $event)
     {
-        //
+        return view('orchestras.programs.events.edit', [
+            'orchestra' => $orchestra,
+            'program' => $program,
+            'event' => $event,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Orchestra $orchestra, Program $program, Event $event)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'type' => 'required|in:rehearsal,concert,soundcheck',
+            'venue' => 'required|string|max:255',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after_or_equal:start_date',
+        ]);
+
+        $event->update($validated);
+
+        return redirect()->route('events.show', [$orchestra, $program, $event ]);
     }
 
     /**
