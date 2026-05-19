@@ -11,7 +11,7 @@
                 <div class="flex gap-2">
                     <a href="{{ route('orchestras.edit', $orchestra) }}" class="px-4 py-1 border rounded-xl">Edit</a>
 
-                    <form action="{{ route('orchestras.show', $orchestra) }}" method="POST" class="px-4 py-1 border rounded-xl">
+                    <form action="{{ route('orchestras.destroy', $orchestra) }}" method="POST" class="px-4 py-1 border rounded-xl">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="text-red-500">

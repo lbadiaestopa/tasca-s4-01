@@ -22,7 +22,7 @@ return new class extends Migration
             $table->foreignId('orchestra_id')
                 ->nullable()
                 ->constrained()
-                ->cascadeOnDelete();
+                ->nullOnDelete();
 
             $table->enum('role', [
                 'admin',
