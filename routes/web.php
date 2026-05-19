@@ -53,6 +53,9 @@ Route::middleware('auth')->group(function () {
             ->name('events.edit');
         Route::put('/orchestras/{orchestra}/programs/{program}/events/{event}', [EventController::class, 'update'])
             ->name('events.update');
+
+        Route::delete('/orchestras/{orchestra}/programs/{program}/events/{event}', [EventController::class, 'destroy'])
+            ->name('events.destroy');
     });
 });
 
