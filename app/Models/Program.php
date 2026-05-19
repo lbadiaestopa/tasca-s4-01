@@ -13,6 +13,11 @@ class Program extends Model
         'orchestra_id',
     ];
 
+    protected $casts = [
+        'start_date' => 'datetime',
+        'end_date' =>'datetime',
+    ];
+
     public function orchestra()
     {
         return $this->belongsTo(Orchestra::class);
