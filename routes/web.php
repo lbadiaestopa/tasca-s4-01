@@ -13,16 +13,22 @@ Route::get('/', function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/profile', [ProfileController::class, 'edit'])
+        ->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])
+        ->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])
+        ->name('profile.destroy');
 
     Route::middleware(RoleMiddleware::class)->group(function () {
-        Route::get('/orchestras', [OrchestraController::class, 'index'])->name('orchestras');
+        Route::get('/orchestras', [OrchestraController::class, 'index'])
+            ->name('orchestras');
 
-        Route::get('/orchestras/{orchestra}', [OrchestraController::class, 'show'])->name('orchestras.show');
+        Route::get('/orchestras/{orchestra}', [OrchestraController::class, 'show'])
+            ->name('orchestras.show');
 
-        Route::get('/create-orchestra', [OrchestraController::class, 'create'])->name('orchestras.create');
+        Route::get('/create-orchestra', [OrchestraController::class, 'create'])
+            ->name('orchestras.create');
         Route::post('create-orchestra', [OrchestraController::class, 'store']);
 
         Route::get('/edit-orchestra/{id}', [OrchestraController::class, 'edit'])
@@ -43,14 +49,16 @@ Route::middleware('auth')->group(function () {
         Route::put('/orchestras/{orchestra}/programs/{program}', [ProgramController::class, 'update'])
             ->name('programs.update');
 
-        Route::get('/orchestras/{orchestra}/programs/{program}', [ProgramController::class, 'show'])->name('programs.show');
+        Route::get('/orchestras/{orchestra}/programs/{program}', [ProgramController::class, 'show'])
+            ->name('programs.show');
 
         Route::get('/orchestras/{orchestra}/programs/{program}/events/create', [EventController::class, 'create'])
             ->name('event.create');
         Route::post('/orchestras/{orchestra}/programs/{program}/events', [EventController::class, 'store'])
             ->name('event.store');
 
-        Route::get('/orchestras/{orchestra}/programs/{program}/events/{event}', [EventController::class, 'show'])->name('events.show');
+        Route::get('/orchestras/{orchestra}/programs/{program}/events/{event}', [EventController::class, 'show'])
+            ->name('events.show');
 
         Route::get('/orchestras/{orchestra}/programs/{program}/events/{event}/edit', [EventController::class, 'edit'])
             ->name('events.edit');

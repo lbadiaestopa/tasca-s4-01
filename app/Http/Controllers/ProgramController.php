@@ -45,7 +45,10 @@ class ProgramController extends Controller
      */
     public function show(Orchestra $orchestra, Program $program)
     {
+        $orchestras = Orchestra::with('programs.events')->get();
+        
         return view('orchestras.programs.show', [
+            'orchestras' => $orchestras,
             'orchestra' => $orchestra,
             'program' => $program,
         ]);
