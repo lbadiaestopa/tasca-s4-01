@@ -83,14 +83,16 @@ class EventController extends Controller
 
         $event->update($validated);
 
-        return redirect()->route('events.show', [$orchestra, $program, $event ]);
+        return redirect()->route('events.show', [$orchestra, $program, $event]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Orchestra $orchestra, Program $program, Event $event)
     {
-        //
+        $event->delete();
+
+        return redirect()->back();
     }
 }
