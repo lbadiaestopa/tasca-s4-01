@@ -25,4 +25,10 @@ class Orchestra extends Model
     {
         return $this->hasMany(Program::class);
     }
+
+    public function admins()
+    {
+        return $this->belongsToMany(User::class, 'memberships')
+            ->wherePivot('role', 'admin');
+    }
 }

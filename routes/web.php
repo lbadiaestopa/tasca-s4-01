@@ -6,6 +6,7 @@ use App\Http\Controllers\OnboardingController;
 use App\Http\Controllers\OrchestraController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\MemberController;
 use App\Http\Middleware\RoleMiddleware;
 
 Route::get('/', function () {
@@ -70,6 +71,11 @@ Route::middleware('auth')->group(function () {
 
         Route::delete('/orchestras/{orchestra}/programs/{program}/events/{event}', [EventController::class, 'destroy'])
             ->name('events.destroy');
+
+        Route::get('members/create', [MemberController::class, 'create'])
+            ->name('members.create');
+        Route::post('members', [MemberController::class, 'store'])
+            ->name('members.store');
     });
 });
 
