@@ -84,8 +84,10 @@ class ProgramController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Orchestra $orchestra, Program $program)
     {
-        //
+        $program->delete();
+
+        return redirect()->route('orchestras.show', $orchestra);
     }
 }
