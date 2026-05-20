@@ -110,7 +110,7 @@
                 ] as $section)
                     <option value="{{ $section }}"
                         {{ old('section') == $section ? 'selected' : '' }}>
-                        {{ $section }}
+                        {{ str($section)->replace('_', ' ')->title() }}
                     </option>
                 @endforeach
             </select>

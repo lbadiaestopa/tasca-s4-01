@@ -74,6 +74,6 @@
         </div>
     </div>
 
-
+    <a href="{{ route('members.create') }}" class="absolute bottom-28 right-8 md:right-12 border border-[#D9D9D9] bg-white shadow-md rounded-2xl px-6 py-3 hover:scale-110 transition-transform duration-200">+ Add a member</a>
     <a href="{{ route('program.create', $orchestra) }}" class="absolute bottom-12 right-8 md:right-12 border border-[#D9D9D9] bg-white shadow-md rounded-2xl px-6 py-3 hover:scale-110 transition-transform duration-200">+ Add a new program</a>
 </x-app-layout>
