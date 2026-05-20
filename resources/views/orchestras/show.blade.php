@@ -48,6 +48,29 @@
                 </div>
             </a>
             @endforeach
+
+            <h2 class="mt-6 text-xl">Orchestra members</h2>
+
+            @php
+            $groupedMembers = $orchestra->memberships->groupBy('section');
+            @endphp
+
+            @foreach($groupedMembers as $section => $members)
+
+            <div class="bg-[#FAFAFA] border rounded-2xl px-4 py-2 mt-2">
+                <h2 class="font-semibold">{{ str($section)->replace('_', ' ')->title() }}</h2>
+
+                <ul>
+                    @foreach($members as $membership)
+                    <li>
+                        {{ $membership->user->name }}
+                        {{ $membership->user->last_name }}
+                    </li>
+                    @endforeach
+                </ul>
+            </div>
+
+            @endforeach
         </div>
     </div>
 
