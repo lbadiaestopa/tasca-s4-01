@@ -74,7 +74,15 @@ class OrchestraController extends Controller
      */
     public function show(string $id)
     {
-        $orchestra = Orchestra::with('programs.events')->findOrFail($id);
+        $orchestra = Orchestra::with([
+            'programs.events',
+            'memberships' => function ($query) {
+                $query->where('role', 'member')
+                    ->with('user')
+                    ->orderBy('section');
+            }
+        ])->findOrFail($id);
+
         $orchestras = Orchestra::with('programs.events')->get();
 
         return view('orchestras.show', [
