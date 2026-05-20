@@ -49,7 +49,10 @@ class EventController extends Controller
      */
     public function show(Orchestra $orchestra, Program $program, Event $event)
     {
+        $orchestras = Orchestra::with('programs.events')->get();
+
         return view('orchestras.programs.events.show', [
+            'orchestras' => $orchestras,
             'orchestra' => $orchestra,
             'program' => $program,
             'event' => $event,
@@ -93,6 +96,9 @@ class EventController extends Controller
     {
         $event->delete();
 
-        return redirect()->back();
+        return redirect()->route('programs.show', [
+            'orchestra' => $orchestra,
+            'program' => $program,
+        ]);
     }
 }
