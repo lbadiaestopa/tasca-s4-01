@@ -52,6 +52,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/orchestras/{orchestra}/programs/{program}', [ProgramController::class, 'show'])
             ->name('programs.show');
 
+        Route::delete('/orchestras/{orchestra}/programs/{program}', [ProgramController::class, 'destroy'])
+            ->name('programs.destroy');
+
         Route::get('/orchestras/{orchestra}/programs/{program}/events/create', [EventController::class, 'create'])
             ->name('event.create');
         Route::post('/orchestras/{orchestra}/programs/{program}/events', [EventController::class, 'store'])
