@@ -34,21 +34,6 @@
                         </div>
                     </a>
                 </div>
-
-                <div class="flex flex-col justify-center">
-                    <div class="flex flex-col mb-2 px-2 rounded-lg">
-                        <a href="{{ route('events.edit', [$event->program->orchestra, $event->program, $event]) }}">Edit</a>
-                    </div>
-
-                    <form action="{{ route('events.destroy', ['orchestra' => $event->program->orchestra, 'program' => $event->program, 'event' => $event]) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="text-red-500">
-                            Delete
-                        </button>
-                    </form>
-                </div>
-            </div>
             @endforeach
         </main>
     </div>
