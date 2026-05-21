@@ -63,8 +63,10 @@
                 <ul>
                     @foreach($members as $membership)
                     <li>
-                        {{ $membership->user->name }}
-                        {{ $membership->user->last_name }}
+                        <a href="{{ route('members.show', [$orchestra, $membership]) }}">
+                            {{ $membership->user->name }}
+                            {{ $membership->user->last_name }}
+                        </a>
                     </li>
                     @endforeach
                 </ul>

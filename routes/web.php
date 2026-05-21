@@ -76,6 +76,9 @@ Route::middleware('auth')->group(function () {
             ->name('members.create');
         Route::post('members', [MemberController::class, 'store'])
             ->name('members.store');
+
+        Route::get('/orchestras/{orchestra}/members/{membership}', [MemberController::class, 'show'])
+            ->name('members.show');
     });
 });
 
