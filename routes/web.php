@@ -85,6 +85,9 @@ Route::middleware('auth')->group(function () {
             ->name('memberships.edit');
         Route::put('/orchestras/{orchestra}/members/{membership}', [MembershipController::class, 'update'])
             ->name('memberships.update');
+
+        Route::delete('/orchestras/{orchestra}/members/{membership}', [MembershipController::class, 'destroy'])
+            ->name('memberships.destroy');
     });
 });
 
