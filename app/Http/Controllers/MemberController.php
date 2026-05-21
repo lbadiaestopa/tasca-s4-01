@@ -71,9 +71,16 @@ class MemberController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
+    public function show(Orchestra $orchestra, Membership $membership)
+    {   
+        $orchestras = Orchestra::with('programs.events')->get();
+        $membership->load('user');
+
+        return view('members.show', [
+            'orchestras' => $orchestras,
+            'orchestra' => $orchestra,
+            'membership' => $membership,
+        ]);
     }
 
     /**
