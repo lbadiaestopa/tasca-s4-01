@@ -7,6 +7,7 @@ use App\Http\Controllers\OrchestraController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\MembershipController;
 use App\Http\Middleware\RoleMiddleware;
 
 Route::get('/', function () {
@@ -79,6 +80,11 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/orchestras/{orchestra}/members/{membership}', [MemberController::class, 'show'])
             ->name('members.show');
+
+        Route::get('/orchestras/{orchestra}/members/{membership}/edit', [MembershipController::class, 'edit'])
+            ->name('memberships.edit');
+        Route::put('/orchestras/{orchestra}/members/{membership}', [MembershipController::class, 'update'])
+            ->name('memberships.update');
     });
 });
 
