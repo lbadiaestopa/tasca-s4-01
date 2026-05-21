@@ -1,6 +1,5 @@
 <x-app-layout>
-    <div class="flex min-h-screen gap-6">
-
+    <div class="relative flex min-h-screen gap-6" x-data="{ open: false }">
         <aside class="w-80 mt-4 ml-4">
             <x-orchestra-tree :orchestras="$orchestras" />
         </aside>
@@ -34,10 +33,36 @@
                         </div>
                     </a>
                 </div>
-            @endforeach
+                @endforeach
         </main>
-    </div>
 
-    <a href="{{ route('members.create') }}" class="absolute bottom-28 right-8 md:right-12 border border-[#D9D9D9] bg-white shadow-md rounded-2xl px-6 py-3 hover:scale-110 transition-transform duration-200">+ Add a member</a>
-    <a href="{{ route('orchestras.create') }}" class="absolute bottom-12 right-8 md:right-12 border border-[#D9D9D9] bg-white shadow-md rounded-2xl px-6 py-3 hover:scale-110 transition-transform duration-200">+ Add an orchestra</a>
+        <!-- Hamburger -->
+        <div>
+            <button @click="open = ! open" class="absolute bottom-24 right-8 md:right-12 inline-flex items-center justify-center p-2 rounded-md text-black hover:bg-gray-100 focus:outline-none transition duration-150 ease-in-out">
+
+                <!-- SVG 1: icona + (quan tancat) -->
+                <svg :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex h-6 w-6" fill="currentColor" viewBox="0 -960 960 960">
+                    <path d="M446.67-446.67H200v-66.66h246.67V-760h66.66v246.67H760v66.66H513.33V-200h-66.66v-246.67Z" />
+                </svg>
+
+                <!-- SVG 2: icona X (quan obert) -->
+                <svg :class="{'hidden': ! open, 'inline-flex': open }" class="hidden h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+
+            </button>
+        </div>
+        
+        <!-- Responsive Navigation Menu -->
+        <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+            <div class="pt-2 pb-3 space-y-1">
+                <x-responsive-nav-link :href="route('orchestras')" :active="request()->routeIs('orchestras')">
+                    {{ __('Orchestras') }}
+                </x-responsive-nav-link>
+            </div>
+        </div>
+
+        <a x-show="open" x-transition href="{{ route('members.create') }}" class="absolute bottom-52 right-8 md:right-12 border border-[#D9D9D9] bg-white shadow-md rounded-2xl px-6 py-3 hover:scale-110 transition-transform duration-200">+ Add a member</a>
+        <a x-show="open" x-transition href="{{ route('orchestras.create') }}" class="absolute bottom-36 right-8 md:right-12 border border-[#D9D9D9] bg-white shadow-md rounded-2xl px-6 py-3 hover:scale-110 transition-transform duration-200">+ Add an orchestra</a>
+    </div>
 </x-app-layout>
