@@ -88,6 +88,11 @@ Route::middleware('auth')->group(function () {
 
         Route::delete('/orchestras/{orchestra}/members/{membership}', [MembershipController::class, 'destroy'])
             ->name('memberships.destroy');
+
+        Route::get('memberships/create', [MembershipController::class, 'create'])
+            ->name('memberships.create');
+        Route::post('memberships', [MembershipController::class, 'store'])
+            ->name('memberships.store');
     });
 });
 
