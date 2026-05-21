@@ -6,7 +6,13 @@
 
         <div class="flex flex-col w-full mx-4">
             <div class="flex flex-col mt-6 justify-between">
-                <h1 class="font-semibold text-2xl">{{ $membership->user->name }} {{ $membership->user->last_name }}</h1>
+                <div class="flex justify-between">
+                    <h1 class="font-semibold text-2xl">{{ $membership->user->name }} {{ $membership->user->last_name }}</h1>
+
+                    <div class="flex gap-2">
+                        <a href="{{ route('memberships.edit', [$orchestra, $membership]) }}" class="px-4 py-1 border rounded-xl">Edit</a>
+                    </div>
+                </div>
 
                 <div class="flex gap-8">
                     <p>
