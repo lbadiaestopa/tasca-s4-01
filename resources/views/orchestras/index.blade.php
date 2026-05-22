@@ -12,14 +12,18 @@
             </div>
         </aside>
 
-        <main class="flex-1 mt-4 mr-4">
-            <h1 class="font-semibold text-2xl">Next Events</h1>
-
+        <main class="flex-1 mt-8">
+            <h1 class="font-semibold text-2xl">Home</h1>
+            
+            <h2 class="text-xl mt-4">Next Events</h2>
+            
+            <div class="h-2"></div>
+            
             @foreach($events as $event)
-            <div class="flex justify-between gap-2 mt-2">
+            <div class="flex flex-col justify-between gap-2">
                 <div class="flex-1">
                     <a href="{{ route('events.show', ['orchestra' => $event->program->orchestra, 'program' => $event->program, 'event' => $event]) }}">
-                        <div class="mb-2 block p-2 rounded-lg bg-[#FAFAFA]">
+                        <div class="mb-2 block px-4 py-2 border rounded-lg bg-[#FAFAFA]">
                             <div class="flex justify-between">
                                 <h3 class="font-semibold">{{ $event->name }}</h3>
                                 <p>{{ \Illuminate\Support\Str::ucfirst($event->type) }}</p>

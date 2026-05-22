@@ -12,8 +12,8 @@
             </div>
         </aside>
 
-        <main class="flex-1 mt-4 mr-4">
-            <div class="flex mt-6 justify-between">
+        <main class="flex-1 mt-8 mr-3">
+            <div class="flex justify-between">
                 <h1 class="font-semibold text-2xl">{{ $orchestra->name }}</h1>
 
                 <div class="flex gap-2">
@@ -37,27 +37,9 @@
                 <p>{{ $orchestra->city }}</p>
             </div>
 
-            <h2 class="mt-6 text-xl">Next programs</h2>
+            <div class="h-px bg-[#737373] mt-1"></div>
 
-            @foreach ($orchestra->programs as $program)
-            <a href="{{ route('programs.show', [$orchestra, $program]) }}">
-                <div class="py-3 mt-2 border border-[#D9D9D9] rounded-2xl">
-                    <div class="flex mx-4 justify-between">
-                        <h3 class="font-semibold">{{ $program->name }}</h3>
-
-                        <div class="flex">
-                            <p>
-                                {{ $program->start_date->format('F j') }}
-                                – {{ $program->end_date->format('j, Y') }}
-                            </p>
-                        </div>
-
-                    </div>
-                </div>
-            </a>
-            @endforeach
-
-            <h2 class="mt-6 text-xl">Orchestra members</h2>
+            <h2 class="mt-4 text-xl">Orchestra members</h2>
 
             @php
             $groupedMembers = $orchestra->memberships->groupBy('section');
@@ -82,8 +64,6 @@
 
             @endforeach
     </div>
-    </div>
 
-    <a href="{{ route('members.create') }}" class="absolute bottom-28 right-8 md:right-12 border border-[#D9D9D9] bg-white shadow-md rounded-2xl px-6 py-3 hover:scale-110 transition-transform duration-200">+ Add a member</a>
     <a href="{{ route('program.create', $orchestra) }}" class="absolute bottom-12 right-8 md:right-12 border border-[#D9D9D9] bg-white shadow-md rounded-2xl px-6 py-3 hover:scale-110 transition-transform duration-200">+ Add a new program</a>
 </x-app-layout>
