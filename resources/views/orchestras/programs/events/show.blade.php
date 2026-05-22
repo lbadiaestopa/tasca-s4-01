@@ -1,10 +1,18 @@
 <x-app-layout>
-    <div class="flex min-h-screen gap-6">
-        <aside class="w-80 mt-4 ml-4">
-            <x-orchestra-tree :orchestras="$orchestras" />
+    <div class="relative flex min-h-screen gap-3" x-data="{ open: false, sidebarOpen: true }">
+        <aside :class="sidebarOpen ? 'w-80' : 'w-8'" class="sticky top-0 h-dvh ml-4 transition-all duration-300 overflow-hidden shrink-0 min-w-0 flex flex-col pt-4">
+            <button @click="sidebarOpen = !sidebarOpen" class="w-8 h-8 flex items-center justify-center rounded-md hover:bg-[#F2F2F2] transition mb-2 shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#000000">
+                    <path d="M144-264v-72h672v72H144Zm0-180v-72h672v72H144Zm0-180v-72h672v72H144Z" />
+                </svg>
+            </button>
+
+            <div x-show="sidebarOpen" x-transition class="flex-1 min-h-0 flex flex-col">
+                <x-orchestra-tree :orchestras="$orchestras" />
+            </div>
         </aside>
 
-        <div class="flex flex-col w-full mx-4">
+        <main class="flex-1 mt-4 mr-4">
             <div class="flex mt-6 justify-between">
                 <h1 class="font-semibold text-2xl">{{ $event->name }}</h1>
 
@@ -20,6 +28,7 @@
                     </form>
                 </div>
             </div>
+            
             <div class="flex gap-8">
                 <p>
                     {{ $event->start_date->format('H:i') }}
