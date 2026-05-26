@@ -37,9 +37,7 @@
                 <p>{{ $orchestra->city }}</p>
             </div>
 
-            <div class="h-px bg-[#737373] mt-1"></div>
-
-            <h2 class="mt-4 text-xl">Orchestra members</h2>
+            <h2 class="mt-6 text-xl">Orchestra members</h2>
 
             @php
             $groupedMembers = $orchestra->memberships->groupBy('section');
@@ -47,7 +45,7 @@
 
             @foreach($groupedMembers as $section => $members)
 
-            <div class="bg-[#FAFAFA] border rounded-2xl px-4 py-2 mt-2">
+            <div class="bg-[#FAFAFA] border rounded-lg px-4 py-2 mt-2">
                 <h2 class="font-semibold">{{ str($section)->replace('_', ' ')->title() }}</h2>
 
                 <ul>

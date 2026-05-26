@@ -12,8 +12,8 @@
             </div>
         </aside>
 
-        <main class="flex-1 mt-4 mr-4">
-            <div class="flex mt-6 justify-between">
+        <main class="flex-1 mt-8 mr-3">
+            <div class="flex justify-between">
                 <h1 class="font-semibold text-2xl">{{ $program->name }}</h1>
 
                 <div class="flex gap-2">
@@ -39,7 +39,7 @@
 
             @foreach ($program->events as $event)
             <a href="{{ route('events.show', [$orchestra, $program, $event]) }}">
-                <div class="py-3 mt-2 border border-[#D9D9D9] rounded-2xl">
+                <div class="bg-[#FAFAFA] border rounded-lg py-2 mt-2">
                     <div class="flex mx-4 justify-between">
                         <div>
                             <h3 class="font-semibold">{{ $event->name }}</h3>
@@ -56,6 +56,5 @@
             </a>
             @endforeach
 
-            <a href="{{ route('members.create') }}" class="absolute bottom-28 right-8 md:right-12 border border-[#D9D9D9] bg-white shadow-md rounded-2xl px-6 py-3 hover:scale-110 transition-transform duration-200">+ Add a member</a>
             <a href="{{ route('event.create', [$orchestra, $program]) }}" class="absolute bottom-12 right-8 md:right-12 border border-[#D9D9D9] bg-white shadow-md rounded-2xl px-6 py-3 hover:scale-110 transition-transform duration-200">+ Add an event</a>
 </x-app-layout>
