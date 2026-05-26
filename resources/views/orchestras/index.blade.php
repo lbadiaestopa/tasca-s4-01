@@ -24,12 +24,12 @@
                 <div class="flex-1">
                     <a href="{{ route('events.show', ['orchestra' => $event->program->orchestra, 'program' => $event->program, 'event' => $event]) }}">
                         <div class="bg-[#FAFAFA] border rounded-lg px-4 py-2 mt-2">
-                            <div class="flex justify-between">
+                            <div class="flex flex-col md:flex-row justify-between">
                                 <h3 class="font-semibold">{{ $event->name }}</h3>
                                 <p>{{ \Illuminate\Support\Str::ucfirst($event->type) }}</p>
                             </div>
 
-                            <div class="flex justify-between">
+                            <div class="flex flex-col md:flex-row justify-between">
                                 <div class="flex gap-2">
                                     <p class="text-[#737373]">{{ $event->program->name }}</p>
                                     <p class="text-[#737373]">·</p>
