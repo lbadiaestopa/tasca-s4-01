@@ -16,6 +16,7 @@
             <div class="flex justify-between">
                 <h1 class="font-semibold text-2xl">{{ $orchestra->name }}</h1>
 
+                @if(auth()->user()->memberships()->where('role', 'admin')->exists())
                 <div class="flex gap-2">
                     <a href="{{ route('orchestras.edit', $orchestra) }}" class="px-4 py-1 border rounded-xl max-h-9">Edit</a>
 
@@ -27,6 +28,7 @@
                         </button>
                     </form>
                 </div>
+                @endif
             </div>
 
             <div class="flex gap-2">
@@ -63,5 +65,7 @@
             @endforeach
     </div>
 
+    @if(auth()->user()->memberships()->where('role', 'admin')->exists())
     <a href="{{ route('program.create', $orchestra) }}" class="absolute bottom-12 right-8 md:right-12 border border-[#D9D9D9] bg-white shadow-md rounded-2xl px-6 py-3 hover:scale-110 transition-transform duration-200">+ Add a program</a>
+    @endif
 </x-app-layout>
