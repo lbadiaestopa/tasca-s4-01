@@ -41,4 +41,9 @@ class User extends Authenticatable
         return $this->belongsToMany(Orchestra::class, 'memberships')
             ->wherePivot('role', 'admin');
     }
+
+    public function orchestras()
+    {
+        return $this->belongsToMany(Orchestra::class, 'memberships');
+    }
 }
