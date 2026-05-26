@@ -49,7 +49,13 @@ class EventController extends Controller
      */
     public function show(Orchestra $orchestra, Program $program, Event $event)
     {
-        $orchestras = Orchestra::with('programs.events')->get();
+        $user = auth()->user();
+
+        $orchestras = Orchestra::with('programs.events')
+            ->whereHas('memberships', function ($q) use ($user) {
+                $q->where('user_id', $user->id);
+            })
+            ->get();
 
         return view('orchestras.programs.events.show', [
             'orchestras' => $orchestras,

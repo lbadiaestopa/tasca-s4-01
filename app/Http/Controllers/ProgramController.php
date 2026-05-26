@@ -45,7 +45,13 @@ class ProgramController extends Controller
      */
     public function show(Orchestra $orchestra, Program $program)
     {
-        $orchestras = Orchestra::with('programs.events')->get();
+        $user = auth()->user();
+
+        $orchestras = Orchestra::with('programs.events')
+            ->whereHas('memberships', function ($q) use ($user) {
+                $q->where('user_id', $user->id);
+            })
+            ->get();
         
         return view('orchestras.programs.show', [
             'orchestras' => $orchestras,

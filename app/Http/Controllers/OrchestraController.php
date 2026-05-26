@@ -14,9 +14,18 @@ class OrchestraController extends Controller
      */
     public function index()
     {
-        $orchestras = Orchestra::with('programs.events')->get();
+        $user = auth()->user();
+
+        $orchestras = Orchestra::with('programs.events')
+            ->whereHas('memberships', function ($q) use ($user) {
+                $q->where('user_id', $user->id);
+            })
+            ->get();
 
         $events = Event::with(['program.orchestra'])
+            ->whereHas('program.orchestra.memberships', function ($q) use ($user) {
+                $q->where('user_id', $user->id);
+            })
             ->orderBy('start_date')
             ->get();
 
@@ -74,6 +83,14 @@ class OrchestraController extends Controller
      */
     public function show(string $id)
     {
+        $user = auth()->user();
+
+        $orchestras = Orchestra::with('programs.events')
+            ->whereHas('memberships', function ($q) use ($user) {
+                $q->where('user_id', $user->id);
+            })
+            ->get();
+
         $orchestra = Orchestra::with([
             'programs.events',
             'memberships' => function ($query) {
@@ -81,9 +98,11 @@ class OrchestraController extends Controller
                     ->with('user')
                     ->orderBy('section');
             }
-        ])->findOrFail($id);
-
-        $orchestras = Orchestra::with('programs.events')->get();
+        ])
+            ->whereHas('memberships', function ($q) use ($user) {
+                $q->where('user_id', $user->id);
+            })
+            ->findOrFail($id);
 
         return view('orchestras.show', [
             'orchestra' => $orchestra,
