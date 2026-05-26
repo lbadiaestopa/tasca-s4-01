@@ -46,6 +46,7 @@
                 @endforeach
         </main>
 
+        @if(auth()->user()->memberships()->where('role', 'admin')->exists())
         <div>
             <button @click="open = ! open" class="absolute bottom-8 right-8 md:right-12 inline-flex items-center justify-center p-2 rounded-md text-black hover:bg-gray-100 focus:outline-none transition duration-150 ease-in-out">
                 <svg :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex h-6 w-6" fill="currentColor" viewBox="0 -960 960 960">
@@ -79,5 +80,6 @@
                 + Add an orchestra
             </a>
         </div>
+        @endif
     </div>
 </x-app-layout>

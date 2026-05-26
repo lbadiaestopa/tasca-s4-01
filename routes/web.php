@@ -22,13 +22,18 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])
         ->name('profile.destroy');
 
-    Route::middleware(RoleMiddleware::class)->group(function () {
-        Route::get('/orchestras', [OrchestraController::class, 'index'])
+    Route::get('/orchestras', [OrchestraController::class, 'index'])
             ->name('orchestras');
+    Route::get('/orchestras/{orchestra}', [OrchestraController::class, 'show'])
+        ->name('orchestras.show');
 
-        Route::get('/orchestras/{orchestra}', [OrchestraController::class, 'show'])
-            ->name('orchestras.show');
+    Route::get('/orchestras/{orchestra}/programs/{program}', [ProgramController::class, 'show'])
+            ->name('programs.show');
+    
+    Route::get('/orchestras/{orchestra}/programs/{program}/events/{event}', [EventController::class, 'show'])
+            ->name('events.show');
 
+    Route::middleware(RoleMiddleware::class)->group(function () {
         Route::get('/create-orchestra', [OrchestraController::class, 'create'])
             ->name('orchestras.create');
         Route::post('create-orchestra', [OrchestraController::class, 'store']);
@@ -51,9 +56,6 @@ Route::middleware('auth')->group(function () {
         Route::put('/orchestras/{orchestra}/programs/{program}', [ProgramController::class, 'update'])
             ->name('programs.update');
 
-        Route::get('/orchestras/{orchestra}/programs/{program}', [ProgramController::class, 'show'])
-            ->name('programs.show');
-
         Route::delete('/orchestras/{orchestra}/programs/{program}', [ProgramController::class, 'destroy'])
             ->name('programs.destroy');
 
@@ -61,9 +63,6 @@ Route::middleware('auth')->group(function () {
             ->name('event.create');
         Route::post('/orchestras/{orchestra}/programs/{program}/events', [EventController::class, 'store'])
             ->name('event.store');
-
-        Route::get('/orchestras/{orchestra}/programs/{program}/events/{event}', [EventController::class, 'show'])
-            ->name('events.show');
 
         Route::get('/orchestras/{orchestra}/programs/{program}/events/{event}/edit', [EventController::class, 'edit'])
             ->name('events.edit');
