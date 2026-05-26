@@ -17,8 +17,6 @@
 
             <h2 class="text-xl mt-4">Next Events</h2>
 
-            <div class="h-2"></div>
-
             @foreach($events as $event)
             <div class="flex flex-col justify-between">
                 <div class="flex-1">

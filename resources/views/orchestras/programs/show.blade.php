@@ -17,9 +17,9 @@
                 <h1 class="font-semibold text-2xl">{{ $program->name }}</h1>
 
                 <div class="flex gap-2">
-                    <a href="{{ route('programs.edit', [$orchestra, $program]) }}" class="px-4 py-1 border rounded-xl">Edit</a>
+                    <a href="{{ route('programs.edit', [$orchestra, $program]) }}" class="px-4 py-1 border rounded-xl max-h-9">Edit</a>
 
-                    <form action="{{ route('programs.destroy', [$orchestra, $program]) }}" method="POST" class="px-4 py-1 border rounded-xl">
+                    <form action="{{ route('programs.destroy', [$orchestra, $program]) }}" method="POST" class="px-4 py-1 border rounded-xl  max-h-9">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="text-red-500">
@@ -40,14 +40,14 @@
             @foreach ($program->events as $event)
             <a href="{{ route('events.show', [$orchestra, $program, $event]) }}">
                 <div class="bg-[#FAFAFA] border rounded-lg py-2 mt-2">
-                    <div class="flex mx-4 justify-between">
+                    <div class="flex mx-4 flex-col md:flex-row justify-between">
                         <div>
                             <h3 class="font-semibold">{{ $event->name }}</h3>
 
                             <p>{{ \Illuminate\Support\Str::ucfirst($event->type) }}</p>
                         </div>
 
-                        <p>
+                        <p class="text-[#737373]">
                             {{ $event->start_date->format('H:i') }}
                             – {{ $event->end_date->format('H:i · F j, Y') }}
                         </p>
