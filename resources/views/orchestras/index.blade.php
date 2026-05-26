@@ -20,10 +20,10 @@
             <div class="h-2"></div>
             
             @foreach($events as $event)
-            <div class="flex flex-col justify-between gap-2">
+            <div class="flex flex-col justify-between">
                 <div class="flex-1">
                     <a href="{{ route('events.show', ['orchestra' => $event->program->orchestra, 'program' => $event->program, 'event' => $event]) }}">
-                        <div class="mb-2 block px-4 py-2 border rounded-lg bg-[#FAFAFA]">
+                        <div class="bg-[#FAFAFA] border rounded-lg px-4 py-2 mt-2">
                             <div class="flex justify-between">
                                 <h3 class="font-semibold">{{ $event->name }}</h3>
                                 <p>{{ \Illuminate\Support\Str::ucfirst($event->type) }}</p>
