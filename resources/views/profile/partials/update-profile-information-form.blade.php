@@ -1,6 +1,6 @@
 <section>
     <header>
-        <h2 class="col-span-full text-xl leading-9 mb-2">
+        <h2 class="text-xl leading-9 mb-2">
             {{ __('Profile Information') }}
         </h2>
 
