@@ -4,7 +4,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" height="1.5rem" viewBox="0 -960 960 960" width="1.5rem" fill="#000000">
                 <path d="M400-240 160-480l240-240 56 58-142 142h486v80H314l142 142-56 58Z" /></svg>
         </a>
-        <h2 class="font-semibold text-center">Sign Up To +++</h2>
+        <h2 class="font-semibold text-center">Sign Up To Vinski</h2>
         <div class="h-6 w-6"></div>
     </div>
 
