@@ -38,8 +38,4 @@
                     · {{ $event->start_date->format('F j, Y') }}
                 </p>
             </div>
-
-            @if(auth()->user()->memberships()->where('role', 'admin')->exists())
-            <a href="{{ route('event.create', [$orchestra, $program]) }}" class="absolute bottom-12 right-8 md:right-12 border border-[#D9D9D9] bg-white shadow-md rounded-2xl px-6 py-3 hover:scale-110 transition-transform duration-200">+ Add an event</a>
-            @endif
 </x-app-layout>
