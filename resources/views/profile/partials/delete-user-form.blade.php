@@ -42,9 +42,9 @@
             </div>
 
             <div class="flex justify-end">
-                <x-secondary-button x-on:click="$dispatch('close')">
+                <x-tertiary-button class="mt-6" x-on:click="$dispatch('close')">
                     {{ __('Cancel') }}
-                </x-secondary-button>
+                </x-tertiary-button>
 
                 <x-danger-button class="ms-3 mt-6 bg-red-500">
                     {{ __('Delete Account') }}
