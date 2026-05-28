@@ -27,12 +27,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/orchestras/{orchestra}', [OrchestraController::class, 'show'])
         ->name('orchestras.show');
 
-    Route::get('/orchestras/{orchestra}/programs/{program}', [ProgramController::class, 'show'])
-            ->name('programs.show');
-    
-    Route::get('/orchestras/{orchestra}/programs/{program}/events/{event}', [EventController::class, 'show'])
-            ->name('events.show');
-
     Route::middleware(RoleMiddleware::class)->group(function () {
         Route::get('/create-orchestra', [OrchestraController::class, 'create'])
             ->name('orchestras.create');
@@ -47,9 +41,9 @@ Route::middleware('auth')->group(function () {
             ->name('orchestras.destroy');
 
         Route::get('/orchestras/{orchestra}/programs/create', [ProgramController::class, 'create'])
-            ->name('program.create');
+            ->name('programs.create');
         Route::post('/orchestras/{orchestra}/programs', [ProgramController::class, 'store'])
-            ->name('program.store');
+            ->name('programs.store');
 
         Route::get('/orchestras/{orchestra}/programs/{program}/edit', [ProgramController::class, 'edit'])
             ->name('programs.edit');
@@ -93,6 +87,12 @@ Route::middleware('auth')->group(function () {
         Route::post('memberships', [MembershipController::class, 'store'])
             ->name('memberships.store');
     });
+
+    Route::get('/orchestras/{orchestra}/programs/{program}', [ProgramController::class, 'show'])
+            ->name('programs.show');
+    
+    Route::get('/orchestras/{orchestra}/programs/{program}/events/{event}', [EventController::class, 'show'])
+            ->name('events.show');
 });
 
 require __DIR__ . '/auth.php';
