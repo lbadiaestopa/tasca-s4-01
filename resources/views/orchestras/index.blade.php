@@ -69,7 +69,7 @@
 
         <div class="absolute bottom-24 right-8 md:right-12 flex flex-col items-end gap-4">
             <a x-show="open" x-transition href="{{ route('memberships.create') }}" class="border border-[#D9D9D9] bg-white shadow-md rounded-2xl px-6 py-3 hover:scale-110 transition-transform duration-200">
-                + Add member to an orchestra
+                + Add a member to an orchestra
             </a>
 
             <a x-show="open" x-transition href="{{ route('members.create') }}" class="border border-[#D9D9D9] bg-white shadow-md rounded-2xl px-6 py-3 hover:scale-110 transition-transform duration-200">
