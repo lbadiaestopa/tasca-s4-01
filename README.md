@@ -1,7 +1,7 @@
 # 🎻 Vinski - Keep Every Orchestra Project in Harmony
 A Laravel-based platform for organizing orchestral projects, rehearsals, concerts, and musician coordination. Built to simplify scheduling, communication, and project management for orchestras and ensembles.
 
-AFEGIR FOTO
+<img width="1244" height="311" alt="Captura de pantalla 2026-05-29 a les 10 54 57" src="https://github.com/user-attachments/assets/f51e5a88-e639-458e-a9d1-66d79110c6db" />
 
 ## ✨ Features
 * 🎼 Create and manage multiple orchestras
@@ -26,6 +26,10 @@ AFEGIR FOTO
 
 **Authentication** 🔐
 * Laravel Breeze
+
+## Preview
+
+<img width="1470" height="324" alt="image" src="https://github.com/user-attachments/assets/b18c1146-50d6-4341-9b4c-2d73cc1a7053" />
 
 ## 🚧  Setup
 
